@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
     name: USER_INFO.name,
     url: "https://elamaran-portfolio.web.app/",
     jobTitle: USER_INFO.rolePrimary,
-    sameAs: [CONTACT_INFO.linkedin, CONTACT_INFO.github].filter(Boolean),
+    sameAs: [CONTACT_INFO.linkedin, CONTACT_INFO.github, CONTACT_INFO.leetcode].filter(Boolean),
     knowsAbout: ["MERN Stack", "React", "Next.js", "Node.js", "MongoDB", "Express.js", "React Native", "Docker", "Microservices", "JavaScript"],
   };
 

@@ -19,8 +19,6 @@ The root `.env` is configured for this workspace. For another environment, copy 
 
 ```env
 NEXT_PUBLIC_EMAIL=
-NEXT_PUBLIC_PHONE_RAW=
-NEXT_PUBLIC_PHONE_FORMATTED=
 NEXT_PUBLIC_LINKEDIN_URL=
 NEXT_PUBLIC_GITHUB_URL=
 NEXT_PUBLIC_USER_NAME="Elamaran A"

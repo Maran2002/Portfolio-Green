@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Phone, Linkedin, Github, Sparkles } from "lucide-react";
+import { Mail, Linkedin, Github, Code2, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { 
   staggerContainerSlow, 
@@ -72,14 +72,14 @@ const Footer = () => {
               <motion.a variants={fadeUp} {...tapPrimary} href={`mailto:${CONTACT_INFO.email}`} className="text-gray-400 hover:text-white transition-colors flex items-center justify-center gap-2 text-lg font-medium">
                 <Mail className="w-5 h-5" /> {CONTACT_INFO.email}
               </motion.a>
-               <motion.a variants={fadeUp} {...tapPrimary} href={`tel:${CONTACT_INFO.phoneRaw}`} className="text-gray-400 hover:text-white transition-colors flex items-center justify-center gap-2 text-lg font-medium">
-                <Phone className="w-5 h-5" /> {CONTACT_INFO.phoneFormatted}
-              </motion.a>
             </div>
             
             <div className="flex items-center gap-4">
               <motion.a variants={fadeUp} {...tapPrimary} href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-dark-card border border-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all">
                 <Linkedin size={20} />
+              </motion.a>
+              <motion.a variants={fadeUp} {...tapPrimary} href={CONTACT_INFO.leetcode} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" title="LeetCode" className="w-12 h-12 bg-dark-card border border-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all">
+                <Code2 size={20} />
               </motion.a>
               <motion.a variants={fadeUp} {...tapPrimary} href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-dark-card border border-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all">
                 <Github size={20} />

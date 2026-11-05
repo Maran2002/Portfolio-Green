@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, X, Github, Linkedin, Mail, Code2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -202,6 +202,16 @@ const Header = () => {
               <Linkedin size={15} />
             </a>
             <a
+              href={CONTACT_INFO.leetcode}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LeetCode"
+              title="LeetCode"
+              className="w-9 h-9 rounded-full bg-[#1a1a1a] border border-white/8 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/20 transition-all"
+            >
+              <Code2 size={15} />
+            </a>
+            <a
               href={`mailto:${CONTACT_INFO.email}`}
               aria-label="Email"
               className="w-9 h-9 rounded-full bg-[#1a1a1a] border border-white/8 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/20 transition-all"
@@ -330,6 +340,9 @@ const Header = () => {
                   </a>
                   <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-[#1a1a1a] border border-white/8 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
                     <Linkedin size={15} />
+                  </a>
+                  <a href={CONTACT_INFO.leetcode} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" title="LeetCode" className="w-9 h-9 rounded-full bg-[#1a1a1a] border border-white/8 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+                    <Code2 size={15} />
                   </a>
                   <a href={`mailto:${CONTACT_INFO.email}`} className="w-9 h-9 rounded-full bg-[#1a1a1a] border border-white/8 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
                     <Mail size={15} />
