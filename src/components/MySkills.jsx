@@ -59,7 +59,7 @@ const SkillChip = ({ skill }) => (
         alt={skill.name}
         width={28}
         height={28}
-        className="max-w-full max-h-full object-contain"
+        className="w-7 h-7 shrink-0 object-contain"
       />
     </div>
     <span className="text-sm font-semibold text-gray-400 group-hover:text-green-400 transition-colors whitespace-nowrap">
