@@ -10,10 +10,9 @@ export const getSecurityHeaders = () => {
 
 export const CONTACT_INFO = {
   email: process.env.NEXT_PUBLIC_EMAIL || "",
-  phoneRaw: process.env.NEXT_PUBLIC_PHONE_RAW || "",
-  phoneFormatted: process.env.NEXT_PUBLIC_PHONE_FORMATTED || "",
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || "",
   github: process.env.NEXT_PUBLIC_GITHUB_URL || "",
+  leetcode: "https://leetcode.com/u/maran2002/",
 };
 
 export const USER_INFO = {

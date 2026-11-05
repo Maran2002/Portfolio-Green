@@ -265,6 +265,7 @@ const ContactForm = () => {
             <div className="reveal-item mt-16 pt-6 flex gap-6">
               <a href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
               <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+              <a href={CONTACT_INFO.leetcode} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">LeetCode</a>
               <a href="/resume" className="text-gray-400 hover:text-white transition-colors">Resume</a>
             </div>
           </div>
