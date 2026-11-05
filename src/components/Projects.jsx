@@ -9,6 +9,7 @@ import {
   springStiff,
 } from "../utils/motionConfig";
 import { useSectionReveal } from "../hooks/useSectionReveal";
+import { markPortfolioBootTask } from "../utils/portfolioBoot";
 
 // ── Decorative SVG atoms ────────────────────────────────────────
 
@@ -52,7 +53,7 @@ const FeaturedCard = ({ project }) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: 20 }}
     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-    className="relative group rounded-2xl overflow-hidden border border-gray-800 hover:border-green-900/50 bg-[#111613] transition-colors duration-300 flex flex-col md:flex-row"
+    className="relative group rounded-2xl overflow-hidden border border-gray-800 hover:border-green-900/50 bg-[#111613] transition-colors duration-300 flex flex-col md:flex-row portfolio-project-card portfolio-project-featured"
   >
     {/* Corner brackets */}
     <CornerBracket className="absolute top-4 left-4 text-green-500/20 z-20 pointer-events-none" />
@@ -67,7 +68,7 @@ const FeaturedCard = ({ project }) => (
     </div>
 
     {/* Image panel */}
-    <div className="md:w-[48%] h-64 md:h-auto relative overflow-hidden bg-dark-bg border-b md:border-b-0 md:border-r border-gray-800/50 shrink-0 min-h-70">
+    <div className="md:w-[48%] h-64 md:h-auto relative overflow-hidden bg-dark-bg border-b md:border-b-0 md:border-r border-gray-800/50 shrink-0 min-h-70 portfolio-project-image">
       {project.base64Image ? (
         <img
           src={project.base64Image}
@@ -94,7 +95,7 @@ const FeaturedCard = ({ project }) => (
     </div>
 
     {/* Content panel */}
-    <div className="flex flex-col justify-center p-8 md:p-12 grow">
+    <div className="flex flex-col justify-center p-8 md:p-12 grow portfolio-project-content">
       <div className="flex items-center gap-2 mb-4">
         <PlusMark className="text-green-500/60 w-2.5 h-2.5" />
         <span className="text-green-500 text-xs font-bold uppercase tracking-widest">{project.type || "Project"}</span>
@@ -128,7 +129,7 @@ const ProjectCard = ({ project }) => (
     exit={{ opacity: 0, scale: 0.93, y: 20 }}
     transition={{ duration: 0.35, ease: "easeOut" }}
     {...cardHoverSubtle}
-    className="rounded-2xl overflow-hidden bg-[#111613] border border-gray-800 hover:border-green-900/50 flex flex-col group transition-colors duration-300 relative"
+    className="rounded-2xl overflow-hidden bg-[#111613] border border-gray-800 hover:border-green-900/50 flex flex-col group transition-colors duration-300 relative portfolio-project-card"
   >
     {/* Bottom-right corner decoration */}
     <div className="absolute bottom-3 right-3 z-20 rotate-180 pointer-events-none">
@@ -136,7 +137,7 @@ const ProjectCard = ({ project }) => (
     </div>
 
     {/* Thumbnail */}
-    <div className={`h-48 w-full flex items-center justify-center relative overflow-hidden bg-dark-bg border-b border-gray-800/50 ${project.base64Image ? "" : project.color}`}>
+    <div className={`h-48 w-full flex items-center justify-center relative overflow-hidden bg-dark-bg border-b border-gray-800/50 portfolio-project-image ${project.base64Image ? "" : project.color}`}>
       {project.base64Image ? (
         <img
           src={project.base64Image}
@@ -152,7 +153,7 @@ const ProjectCard = ({ project }) => (
     </div>
 
     {/* Content */}
-    <div className="p-5 flex flex-col grow">
+    <div className="p-5 flex flex-col grow portfolio-project-content">
       <div className="flex items-center justify-between mb-2">
         <span className="text-green-500 text-xs font-bold uppercase tracking-widest">{project.type || "Project"}</span>
         <CircleDot className="text-gray-700 group-hover:text-green-500/40 transition-colors duration-300 w-2 h-2" />
@@ -193,6 +194,7 @@ const Projects = () => {
   });
 
   const fetchProjects = async () => {
+    let requestFailed = false;
     try {
       const res = await fetchWithAuth("/api/projects");
       const data = await res.json();
@@ -204,8 +206,10 @@ const Projects = () => {
       }
     } catch (err) {
       console.error("Failed to load projects:", err);
+      requestFailed = true;
       setProjects([]);
     } finally {
+      markPortfolioBootTask("data", requestFailed ? "failed" : "ready");
       setLoading(false);
     }
   };

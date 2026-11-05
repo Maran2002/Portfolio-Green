@@ -1,6 +1,7 @@
 import "../src/App.css";
 import ClientShell from "./client-shell";
 import { CONTACT_INFO, USER_INFO } from "../src/utils/apiConfig";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   metadataBase: new URL("https://elamaran-portfolio.web.app"),
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         <ClientShell>{children}</ClientShell>
+        <Analytics />
       </body>
     </html>
   );

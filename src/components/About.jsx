@@ -91,7 +91,7 @@ const About = () => {
             className="relative"
           >
             {/* Main image card */}
-            <div className="relative rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group aspect-3/4">
+            <div className="relative rounded-2xl overflow-hidden border border-gray-800 shadow-2xl group aspect-3/4 about-portrait-frame">
               <div className="absolute inset-0 bg-dark-card z-0"></div>
               <Image
                 src={photoMine}
@@ -102,6 +102,11 @@ const About = () => {
                 className="w-full h-full object-cover relative z-10 filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent z-20"></div>
+
+              <div className="about-portrait-label absolute top-5 left-5 z-30 flex items-center gap-2.5 px-3.5 py-2 rounded-full">
+                <span className="about-portrait-status" aria-hidden="true" />
+                <span>FULL STACK / MERN</span>
+              </div>
 
               {/* Name tag */}
               <div className="absolute bottom-5 left-5 z-30">
@@ -118,7 +123,7 @@ const About = () => {
           {/* Content Side */}
           <div className="flex flex-col justify-center space-y-8 lg:py-8">
             <div className="reveal-item opacity-0">
-              <span className="text-green-500 font-bold tracking-widest uppercase text-sm border border-green-500/30 bg-green-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+              <span className="text-green-500 font-bold tracking-widest uppercase text-sm border border-green-500/30 px-4 py-1.5 rounded-full inline-block mb-4">
                 Engineering Mindset
               </span>
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
