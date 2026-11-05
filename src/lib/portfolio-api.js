@@ -52,7 +52,6 @@ function rateLimit(request) {
 }
 
 function apiSecurityError(request) {
-  // Browser requests send NEXT_PUBLIC_* values, so use those first here too.
   const apiKey = process.env.NEXT_PUBLIC_API_KEY || process.env.API_KEY || "";
   const headerName = (process.env.NEXT_PUBLIC_APP_HEADER_NAME || process.env.APP_HEADER_NAME || "x-client-access-id-pf").toLowerCase();
   const headerValue = process.env.NEXT_PUBLIC_APP_HEADER_VALUE || process.env.APP_HEADER_VALUE || "";
