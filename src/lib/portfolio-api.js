@@ -52,9 +52,10 @@ function rateLimit(request) {
 }
 
 function apiSecurityError(request) {
-  const apiKey = process.env.API_KEY || process.env.NEXT_PUBLIC_API_KEY || "";
-  const headerName = (process.env.APP_HEADER_NAME || process.env.NEXT_PUBLIC_APP_HEADER_NAME || "x-client-access-id-pf").toLowerCase();
-  const headerValue = process.env.APP_HEADER_VALUE || process.env.NEXT_PUBLIC_APP_HEADER_VALUE || "";
+  // Browser requests send NEXT_PUBLIC_* values, so use those first here too.
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY || process.env.API_KEY || "";
+  const headerName = (process.env.NEXT_PUBLIC_APP_HEADER_NAME || process.env.APP_HEADER_NAME || "x-client-access-id-pf").toLowerCase();
+  const headerValue = process.env.NEXT_PUBLIC_APP_HEADER_VALUE || process.env.APP_HEADER_VALUE || "";
   if (!apiKey || request.headers.get("x-api-key") !== apiKey) return json({ success: false, message: "Forbidden: Invalid API Key" }, 403);
   if (!headerValue || request.headers.get(headerName) !== headerValue) return json({ success: false, message: "Forbidden: Invalid App Context" }, 403);
   return null;
